@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تغيير بيانات الدخول - البنك العقاري المصري العربي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+        }
+        .password-input-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #4a6b57;
+        }
+        .form-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .progress-bar {
+            height: 5px;
+            transition: width 0.3s ease;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .bank-logo {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+        .bank-logo:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl p-8 w-full max-w-md form-shadow animate-fade-in">
+        <!-- Logo Section -->
+        <div class="flex justify-center mb-8">
+            <img src="https://upload.wikimedia.org/wikipedia/ar/d/d5/%D8%A7%D9%84%D8%A8%D9%86%D9%83_%D8%A7%D9%84%D8%B9%D9%82%D8%A7%D8%B1%D9%8A_%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A_%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A.png" 
+                 alt="شعار البنك العقاري المصري العربي الرسمي باللونين الأزرق والأخضر مع كتابة اسم البنك بالعربية والإنجليزية"
+                 class="bank-logo h-20 object-contain">
+        </div>
+
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">تحديث بيانات الدخول</h1>
+        
+        <form id="changeCredentialsForm" class="space-y-5">
+            <!-- Current Credentials -->
+            <div class="space-y-2">
+                <label for="currentUsername" class="block text-sm font-medium text-gray-700">اسم المستخدم الحالي</label>
+                <input type="text" id="currentUsername" 
+                       class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-300"
+                       required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="currentPassword" class="block text-sm font-medium text-gray-700">كلمة المرور الحالية</label>
+                <div class="password-input-container">
+                    <input type="password" id="currentPassword" 
+                           class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-300 pr-10"
+                           required>
+                    <span class="toggle-password" onclick="togglePassword('currentPassword')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <!-- New Username -->
+            <div class="space-y-2">
+                <label for="newUsername" class="block text-sm font-medium text-gray-700">اسم المستخدم الجديد (اختياري)</label>
+                <input type="text" id="newUsername" 
+                       class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-300"
+                       placeholder="اتركه فارغاً إذا لم ترغب في التغيير">
+            </div>
+
+            <!-- New Password -->
+            <div class="space-y-2">
+                <label for="newPassword" class="block text-sm font-medium text-gray-700">كلمة المرور الجديدة</label>
+                <div class="password-input-container">
+                    <input type="password" id="newPassword" 
+                           class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-300 pr-10"
+                           required>
+                    <span class="toggle-password" onclick="togglePassword('newPassword')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="text-xs text-gray-500 mt-1">
+                    متطلبات كلمة المرور:
+                    <ul class="list-disc list-inside mt-1">
+                        <li>8 أحرف على الأقل</li>
+                        <li>حرف كبير على الأقل</li>
+                        <li>رقم واحد على الأقل</li>
+                        <li>رمز خاص مثل (!@#$%)</li>
+                    </ul>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                    <div id="passwordStrengthBar" class="progress-bar h-1.5 rounded-full" style="width: 0%; background-color: #ef4444;"></div>
+                </div>
+                <p id="passwordStrengthText" class="text-xs text-gray-600 mt-1"></p>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="space-y-2">
+                <label for="confirmPassword" class="block text-sm font-medium text-gray-700">تأكيد كلمة المرور الجديدة</label>
+                <div class="password-input-container">
+                    <input type="password" id="confirmPassword" 
+                           class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-300 pr-10"
+                           required>
+                    <span class="toggle-password" onclick="togglePassword('confirmPassword')">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </span>
+                </div>
+                <p id="passwordMatchError" class="text-xs text-red-500 mt-1 hidden">كلمة المرور غير متطابقة</p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" 
+                    class="w-full bg-[#1a3f8f] hover:bg-[#142d6b] text-white font-medium py-2.5 px-4 rounded-lg transition duration-300 transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-[#1a3f8f] focus:ring-opacity-50 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-5L9 4H4zm7 5a1 1 0 10-2 0v1H8a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V9z" clip-rule="evenodd" />
+                </svg>
+                حفظ التغييرات
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+
+        // Password strength checker
+        document.getElementById('newPassword').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const strengthBar = document.getElementById('passwordStrengthBar');
+            const strengthText = document.getElementById('passwordStrengthText');
+            
+            let strength = 0;
+            
+            // Check for length
+            if (password.length >= 8) strength += 25;
+            if (password.length >= 12) strength += 15;
+            
+            // Check for uppercase letters
+            if (/[A-Z]/.test(password)) strength += 20;
+            
+            // Check for numbers
+            if (/\d/.test(password)) strength += 20;
+            
+            // Check for special characters
+            if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 20;
+            
+            // Update progress bar
+            strengthBar.style.width = `${strength}%`;
+            
+            // Update color and text based on strength
+            if (strength < 40) {
+                strengthBar.style.backgroundColor = '#ef4444';
+                strengthText.textContent = 'قوة كلمة المرور: ضعيفة';
+                strengthText.className = 'text-xs text-red-500 mt-1';
+            } else if (strength < 70) {
+                strengthBar.style.backgroundColor = '#f59e0b';
+                strengthText.textContent = 'قوة كلمة المرور: متوسطة';
+                strengthText.className = 'text-xs text-yellow-500 mt-1';
+            } else {
+                strengthBar.style.backgroundColor = '#10b981';
+                strengthText.textContent = 'قوة كلمة المرور: قوية';
+                strengthText.className = 'text-xs text-green-500 mt-1';
+            }
+        });
+
+        // Form validation
+        document.getElementById('changeCredentialsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordMatchError');
+            
+            // Reset errors
+            passwordError.classList.add('hidden');
+            
+            // Check if passwords match
+            if (newPassword !== confirmPassword) {
+                passwordError.classList.remove('hidden');
+                return;
+            }
+            
+            // Check password strength requirements
+            if (newPassword.length < 8 || 
+                !/[A-Z]/.test(newPassword) || 
+                !/\d/.test(newPassword) || 
+                !/[!@#$%^&*(),.?":{}|<>]/.test(newPassword)) {
+                alert('كلمة المرور الجديدة لا تستوفي متطلبات الأمان المطلوبة');
+                return;
+            }
+            
+            // Form is valid - show success message
+            alert('تم تحديث بيانات الدخول بنجاح!');
+            this.reset();
+            document.getElementById('passwordStrengthBar').style.width = '0%';
+            document.getElementById('passwordStrengthText').textContent = '';
+        });
+    </script>
+</body>
+</html>
